@@ -6,6 +6,7 @@ These functions are not test or feature specific.
 from selenium import webdriver
 from Common.CommonConfigs import urlconfig
 
+
 def go_to(context, location):
     _url = urlconfig.URLCONFIG.get(location)
 
@@ -19,16 +20,25 @@ def go_to(context, location):
 
     if not browser:
         browser = 'chrome'
+
     if browser.lower() == 'chrome':
+        # create instance of Firefox driver the browser type is not specified
         context.driver = webdriver.Chrome()
+    elif browser.lower() == 'headlesschrome':
+        options = webdriver.ChromeOptions()
+        options.add_argument('--headless')
+        context.driver = webdriver.Chrome(options=options)
     elif browser.lower() in ('ff', 'firefox'):
+        # create instance of the Chrome driver
         context.driver = webdriver.Firefox()
     else:
-        raise Exception("The browser type '{}' is not supported".format(browser))
+        raise Exception("The browser type '{}' is not supported".format(context))
 
     # clean url and go to it
     url = url.strip()
     context.driver.get(url)
+
+
 #
 # #=========================================================#
 #
@@ -56,31 +66,33 @@ def go_to(context, location):
 #
 # # =========================================================#
 #
-# def find_element(context, locator_attribute, locator_text):
-#     posible_locators = ["id", "xpath", "Link text", "partial link text", "name"]
-#
-#     if locator_attribute not in posible_locators:
-#         raise Exception('The locator atribute provided is not in the approve atributes...')
-#     try:
-#         element = context.driver.find_element(locator_attribute,locator_text)
-#         return element
-#     except Exception as (e):
-#         raise Exception(e)
-#
-# # =========================================================#
-#
-# def is_element_visible(element):
-#
-#     if element.is_displayed():
-#         return True
-#     else:
-#         return False
+def find_web_element(context, locator_attribute, locator_text):
+    possible_locators = ["id", "xpath", "link text", "partial link text", "name", "tag name", "class name",
+                         "css selector"]
+
+    if locator_attribute not in possible_locators:
+        raise Exception('The locator attribute provided is not in the approved attributes. Or the spelling and format does not match.\
+                                The approved attributes are : %s ' % possible_locators)
+    try:
+        element = context.driver.find_element(locator_attribute, locator_text)
+        return element
+    except Exception as e:
+        raise Exception(e)
+
+
+# =========================================================#
+
+def is_element_visible(web_element):
+    if web_element.is_displayed():
+        return True
+    else:
+        return False
 #
 # # =========================================================#
 #
 # def assert_element_visible(element):
 #     if not element.is_displayed():
-#         raise AssertionError('The element is not dispalyed')
+#         raise AssertionError('The element is not displayed')
 #
 # # =========================================================#
 #
