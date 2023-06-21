@@ -21,19 +21,15 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
         
-      - name: Install Chrome browser
+      
+      - name: chromedriver set up
+        uses: nanasess/setup-chromedriver@v2
+      
+      - name: chromedriver
         run: |
-          wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-          sudo dpkg -i google-chrome-stable_current_amd64.deb
-          sudo apt-get -f install
-
-      - name: Install Chromedriver
-        run: |
-          LATEST=$(wget -q -O - http://chromedriver.storage.googleapis.com/LATEST_RELEASE)
-          wget http://chromedriver.storage.googleapis.com/$LATEST/chromedriver_linux64.zip
-          unzip chromedriver_linux64.zip
-          sudo mv chromedriver /usr/local/bin/
-          sudo chmod +x /usr/local/bin/chromedriver
+          export DISPLAY=:99
+          chromedriver --url-base=/wd/hub &
+          sudo Xvfb -ac :99 -screen 0 1280x1024x24 > /dev/null 2>&1 & # optional
 
       - name: Selenium test 
         run: behave tests 
