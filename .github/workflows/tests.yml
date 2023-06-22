@@ -22,7 +22,8 @@ jobs:
         pipenv install
     - name: Prepare Selenium
       # https://github.com/marketplace/actions/setup-chromedriver
-      uses: nanasess/setup-chromedriver@1.0.5
+      uses: nanasess/setup-chromedriver@v2.0.0
+
       
 
       
