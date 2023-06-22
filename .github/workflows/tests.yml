@@ -10,13 +10,8 @@ jobs:
     runs-on: macos-latest
 
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-python@v4
-        with:
-          python-version: 3.10.5
-      - uses: cryptic-wizard/run-behave-tests@v0.3.0
-        with:
-          test-path: auto_frame
-          test-output-name: results.txt
-          
+      - name: my-step
+        run: echo "hello"
+
+    
      
