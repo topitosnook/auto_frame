@@ -17,7 +17,7 @@ def add_drivers_to_path():
     else:
         raise Exception("Unknown platform. Unable to add webdrivers to path.")
 
-    current_path = os.environ.get['PATH']
+    current_path = os.environ.get('PATH')
     new_path = webdriver_path + ':' + current_path
     os.environ['PATH'] = new_path
 
