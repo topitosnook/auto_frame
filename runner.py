@@ -26,7 +26,7 @@ if __name__ == '__main__':
 
     add_drivers_to_path()
 
-    command = f'behave tests -f json -o json_out.json'
+    command = f'behave tests --no-capture -f json -o json_out.json'
     print(f"Running command: {command}")
 
     rs = subprocess.run(command, shell=True)
