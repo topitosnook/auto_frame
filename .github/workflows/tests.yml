@@ -26,8 +26,7 @@ jobs:
         version: latest
     - name: try behave
       run: |
-        python runner.py add_drivers_to_path
-        python runner.py
+        python runner.py 
 
 
       
