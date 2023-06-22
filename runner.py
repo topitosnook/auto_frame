@@ -21,10 +21,9 @@ def add_drivers_to_path():
     new_path = webdriver_path + ':' + current_path
     os.environ['PATH'] = new_path
 
+    add_drivers_to_path()
 
 if __name__ == '__main__':
-
-    add_drivers_to_path()
 
     command = f'behave tests --no-capture -f json -o json_out.json'
     print(f"Running command: {command}")
