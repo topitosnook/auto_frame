@@ -20,12 +20,7 @@ jobs:
           pip install -r requirements.txt
     - name: try behave
       run: python runner.py
-    - name: Report
-      run: python report_generation.py --input_json_file json_out.json --output_html_file my_custom_report.html
-    - name: Proof HTML
-      uses: anishathalye/proof-html@v2.0.4
-      with:
-        directory: ./my_custom_report.html
+
       
 
       
