@@ -23,6 +23,13 @@ jobs:
     - name: Prepare Selenium
       # https://github.com/marketplace/actions/setup-chromedriver
       uses: nanasess/setup-chromedriver@v2.0.0
+    - name: Start XVFB
+      run: Xvfb :99 &
+      
+    - name: Run tests
+      run: behave tests
+      env:
+        DISPLAY: :99
 
       
 
