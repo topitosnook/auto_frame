@@ -21,8 +21,9 @@ jobs:
           brew install allure
     - name: try behave
       run: python runner.py
-    - name: see if i can serve the allure file
-      run: allure serve allure-results
+    - name: Allure Report with history
+      uses: simple-elf/allure-report-action@v1.6
+
 
       
 
