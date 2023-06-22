@@ -20,6 +20,14 @@ jobs:
         python -m pip install --upgrade pip
         pip install flake8 pytest
         if [-f requirements.txt]; then pip install -r requirements.txt; fi
+    - name: Removing previous chrome instances on runner
+      run: sudo apt purge google-chrome-stable  
+    - name: Installing all necessary packages
+      run: pip install chromedriver-autoinstaller selenium pyvirtualdisplay
+    
+      
+      
+    
     
 
     
