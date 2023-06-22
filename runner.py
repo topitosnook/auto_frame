@@ -30,3 +30,4 @@ if __name__ == '__main__':
 
     if os.path.isdir("allure-results"):
       print('helloworld')
+
