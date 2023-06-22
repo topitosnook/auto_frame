@@ -28,7 +28,8 @@ def add_drivers_to_path():
 
 
 if __name__ == '__main__':
-        command = f'behave tests'
+        command = f'behave tests --format allure_behave.formatter:AllureFormatter -o ./allure-results' \
+
 
         print(f"Running command: {command}")
 
