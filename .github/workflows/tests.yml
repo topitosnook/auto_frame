@@ -19,10 +19,8 @@ jobs:
       run: |
           pip install -r requirements.txt
           
-    - name: Install Chrome, Firefox and Git on OS
-      uses: shreyash-Pandey-Katni/Chrome-Firefox-git-install-action@v2
-      with:
-        chrome: true
+    - uses: browser-actions/setup-chrome@latest
+    - run: chrome --version
 
     - name: try behave
       run: |
