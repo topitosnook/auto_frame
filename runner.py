@@ -3,6 +3,7 @@ import os
 import pathlib
 import platform
 
+
 def add_drivers_to_path():
     print("Adding webdrivers to path.")
     curr_file_path = pathlib.Path(__file__).parent.absolute()
@@ -20,13 +21,13 @@ def add_drivers_to_path():
     new_path = webdriver_path + ':' + current_path
     os.environ['PATH'] = new_path
 
+
 if __name__ == '__main__':
-    add_drivers_to_path()
 
     command = f'behave tests --no-capture'
     print(f"Running command: {command}")
 
     rs = subprocess.run(command, shell=True)
 
-    if os.path.isfile("json_out.json"):
-        print('helloworld')
+    # if os.path.isfile("json_out.json"):
+    #     print('helloworld')
