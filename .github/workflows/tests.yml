@@ -25,7 +25,9 @@ jobs:
         browser: chrome
         version: latest
     - name: try behave
-      run: python runner.py
+      run: |
+        python runner.py 
+
 
       
 
