@@ -1,14 +1,10 @@
 import subprocess
-import argparse
-from datetime import datetime
 import os
 import pathlib
 import platform
 
 
-
 def add_drivers_to_path():
-
     print("Adding webdrivers to path.")
     curr_file_path = pathlib.Path(__file__).parent.absolute()
 
@@ -26,11 +22,11 @@ def add_drivers_to_path():
     os.environ['PATH'] = new_path
 
 
-
 if __name__ == '__main__':
-        command = f'behave tests --format allure_behave.formatter:AllureFormatter -o ./allure-results' \
+    command = f'behave tests --format allure_behave.formatter:AllureFormatter -o ./allure-results'
+    print(f"Running command: {command}")
 
+    rs = subprocess.run(command, shell=True)
 
-        print(f"Running command: {command}")
-
-        rs = subprocess.run(command, shell=True)
+    if os.path.isdir("allure-results"):
+      print('helloworld')
