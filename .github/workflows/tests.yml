@@ -12,30 +12,10 @@ jobs:
     steps:
     - uses: actions/checkout@v3
    
-    - name: Install Docker
+    - name: Install Chrome
       run: |
-          brew update
-          brew install --cask docker
-
-    - name: Start Docker
-      run: open --background -a Docker
-
-    - name: Wait for Docker to start
-      run: |
-          timeout=$((SECONDS+240))
-          while ! docker info >/dev/null 2>&1; do
-              if [ $SECONDS -gt $timeout ]; then
-                  echo "Docker failed to start."
-                  exit 1
-              fi
-              sleep 1
-          done
-          
-    
-    - name: Build and run Docker image - run behave tests
-      run: |
-          docker build -t selenium-tests .
-          docker run -v $PWD:/automation_framework selenium-tests behave tests
+        brew install --cask google-chrome
+        print(google-chrome --version)
 
 
       
