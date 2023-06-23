@@ -24,6 +24,11 @@ jobs:
       
     - name: Install environment requirements
       run: pip install -r requirements.txt
+    
+    - name: Add chromedriver to PATH
+      run: |
+          echo 'export PATH="/webdrivers/chromedriver:$PATH"' >> $GITHUB_ENV
+
       
     - name: Run behave tests
       run: behave tests --no-capture
