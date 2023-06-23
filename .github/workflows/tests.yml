@@ -11,11 +11,11 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-   
-    - name: Install Chrome
-      run: |
-        brew install --cask google-chrome
-        print(google-chrome --version)
+    
+    - name: is chrome install
+      run: print(google-chrome --version)
+
+
 
 
       
