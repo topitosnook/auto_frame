@@ -17,6 +17,8 @@ jobs:
         brew reinstall --cask google-chrome
     - name: Install chromedriver
       run: brew reinstall --cask chromedriver
+    - name: Run behave tests
+      run: behave tests --no-capture
 
 
       
