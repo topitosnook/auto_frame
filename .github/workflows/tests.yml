@@ -23,11 +23,13 @@ jobs:
     - name: Install Chromedriver
       run: |
         brew reinstall --cask chromedriver        
-        
+      
     - name: Install environment requirements
       run: pip install -r requirements.txt
       
-    
+    - name: Run behave
+      run: behave tests --no-capture
+      
 
 
       
