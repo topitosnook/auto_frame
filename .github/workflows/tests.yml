@@ -13,7 +13,7 @@ jobs:
     - uses: actions/checkout@v3
     
     - name: is chrome install
-      run: print(google-chrome --version)
+      run: google-chrome --version
 
 
 
