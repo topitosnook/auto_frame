@@ -31,10 +31,16 @@ jobs:
         
     - name: Install environment requirements
       run: pip install -r requirements.txt
+
+    - name: Installing allure
+      run: brew install allure
       
     - name: Run behave
-      run: behave tests --no-capture  
+      run: python runner.py
 
+    - name: try to serve allure
+      if: success() || failure()
+      run: allure serve allure-results/
 
       
 
