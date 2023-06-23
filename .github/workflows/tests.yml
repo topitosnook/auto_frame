@@ -33,8 +33,10 @@ jobs:
       run: pip install -r requirements.txt
       
     - name: Run behave
-      run: behave tests --no-capture  
-
+      run: |
+        behave tests -f json -o my_json_output.json
+        python report_generation.py --input_json_file  my_json_output.json --output_html_file report.html
+        open ./ report.html
 
       
 
