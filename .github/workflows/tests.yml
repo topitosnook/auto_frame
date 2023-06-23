@@ -15,8 +15,8 @@ jobs:
     - name: Install Chrome
       run: |
         brew reinstall --cask google-chrome
-        google-chrome --version
-
+    - name: Install chromedriver
+      run: brew reinstall --cask chromedriver
 
 
       
