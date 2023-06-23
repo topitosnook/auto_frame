@@ -11,20 +11,14 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - name: Set up Python 3.10
-      uses: actions/setup-python@v3
-      with:
-        python-version: "3.10"
-    - name: Install dependencies
-      run: |
-          pip install -r requirements.txt
-          
-    - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
+   
+    - name: Set up Docker
+      uses: docker/setup-docker@v1
 
-    - name: try behave
+    - name: Build and run Docker image
       run: |
-        python runner.py 
+          docker build -t selenium-tests .
+          docker run -v $PWD:/automation_framework selenium-tests behave tests
 
 
       
