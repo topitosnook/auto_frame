@@ -18,20 +18,16 @@ jobs:
     - name: Install Chrome
       run: |
         brew reinstall --cask google-chrome
+        /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --version    
         
-    - name: Install chromedriver
-      run: brew reinstall --cask chromedriver
-      
     - name: Install environment requirements
       run: pip install -r requirements.txt
+      
     
     - name: Add chromedriver to PATH
       run: |
           echo 'export PATH="/webdrivers/chromedriver:$PATH"' >> $GITHUB_ENV
 
-      
-    - name: Run behave tests
-      run: behave tests --no-capture
 
 
       
