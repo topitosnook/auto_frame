@@ -40,11 +40,10 @@ jobs:
 
     - name: Generate Allure report
       run: allure generate --clean
-    - name: Upload Allure report
-      uses: actions/upload-artifact@v2
+    - name: dwnload
+      uses: actions/download-artifact@v3
       with:
-          name: allure-report
-          path: allure-report
+        name: my-artifact
     
 
     
