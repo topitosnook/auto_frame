@@ -37,8 +37,13 @@ jobs:
       
     - name: Run behave
       run: python runner.py
-    - name: check if folder is there
-      run: ls
+
+    - name: Upload Allure report
+      uses: actions/upload-artifact@v2
+      with:
+          name: allure-report
+          path: allure-report
+    
  
 
     
