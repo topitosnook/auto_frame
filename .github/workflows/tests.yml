@@ -37,14 +37,9 @@ jobs:
       
     - name: Run behave
       run: python runner.py
-
-    - name: Generate Allure report
-      run: allure generate --clean
-    - name: dwnload
-      uses: actions/download-artifact@v3
-      with:
-        name: my-artifact
-    
+    - name: check if folder is there
+      run: ls
+ 
 
     
     
