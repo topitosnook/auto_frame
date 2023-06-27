@@ -1,3 +1,3 @@
 from behave import given, then, when
-from Common.CommonFuncs import webcommon
-from Common.CommonSteps import webcommonsteps
+from CommonFiles.CommonFuncs import webcommon
+from CommonFiles.CommonSteps import webcommonsteps

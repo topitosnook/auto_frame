@@ -4,7 +4,7 @@ These functions are not test or feature specific.
 """
 
 from selenium import webdriver
-from Common.CommonConfigs import urlconfig
+from CommonFiles.CommonConfigs import urlconfig
 
 
 def go_to(context, location):

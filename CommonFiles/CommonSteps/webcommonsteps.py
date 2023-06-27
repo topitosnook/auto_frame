@@ -1,6 +1,6 @@
 from behave import given, then
-from Common.CommonFuncs import webcommon
-from Common.CommonConfigs import locatorsconfig
+from CommonFiles.CommonFuncs import webcommon
+from CommonFiles.CommonConfigs import locatorsconfig
 
 
 # start of steps definitions
