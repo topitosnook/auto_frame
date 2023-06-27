@@ -39,33 +39,6 @@ def go_to(context, location):
     context.driver.get(url)
 
 
-#
-# #=========================================================#
-#
-# def assert_page_tittle(context,expected_title):
-#     actual_title = context.driver.title
-#     print("The actual title is: {}".format(actual_title))
-#     print("The expected title is: {}".format(expected_title))
-#
-#     assert expected_title == actual_title,"The title is not as expected" \
-#                                           "Expected: {}, Actual: {}".format(expected_title,actual_title)
-#     print("The page title is as expected.")
-#
-# # =========================================================#
-#
-# def assert_current_url(context,expected_url):
-#     current_url = context.driver.current_url
-#
-#     if not expected_url.startswith('http') or not expected_url.startswith('https'):
-#         expected_url = 'https://' + expected_url + '/'
-#
-#     assert current_url == expected_url, "The current url is not as expected." \
-#                                         "Actual: {}, Expected: {}".format(current_url,expected_url)
-#
-#     print("The page url is as expected")
-#
-# # =========================================================#
-#
 def find_web_element(context, locator_attribute, locator_text):
     possible_locators = ["id", "xpath", "link text", "partial link text", "name", "tag name", "class name",
                          "css selector"]
@@ -87,19 +60,21 @@ def is_element_visible(web_element):
         return True
     else:
         return False
-#
-# # =========================================================#
-#
-# def assert_element_visible(element):
-#     if not element.is_displayed():
-#         raise AssertionError('The element is not displayed')
-#
-# # =========================================================#
-#
-# def type_into_element(context_or_element, input_value, locator_att, locator_text):
-#     if isinstance(context_or_element, webdriver.remote.webelement.WebElement):
-#         input_field = context_or_element
-#     else:
-#         input_field = context_or_element.driver.find_element(locator_att, locator_text)
-#
-#     input_field.send_keys(input_value)
+
+def type_into_element(context_or_element, input_value, locator_att, locator_text):
+
+    if isinstance(context_or_element, webdriver.remote.webelement.WebElement):
+        input_filed = context_or_element
+    else:
+        input_filed = context_or_element.driver.find_element(locator_att, locator_text)
+
+    input_filed.send_keys(input_value)
+
+def click(context_or_element, locator_att=None, locator_text=None):
+
+    if isinstance(context_or_element, webdriver.remote.webelement.WebElement):
+        element = context_or_element
+    else:
+        element = context_or_element.driver.find_element(locator_att, locator_text)
+
+    element.click()
