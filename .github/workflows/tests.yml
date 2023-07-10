@@ -11,19 +11,6 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - name: Set up Python 3.10
-      uses: actions/setup-python@v3
-      with:
-        python-version: "3.10"
-    - name: Install Chrome
-      run: |
-        brew reinstall --cask google-chrome
-        /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --version    
-        
-    - name: Checkout Chromedriver 
-      run: |
-          cd webdrivers/mac
-          chromeDriver -v   
       
     - name: Add chromedriver to PATH
       run: |
