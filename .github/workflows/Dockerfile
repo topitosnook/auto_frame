@@ -1,18 +1,15 @@
 # Use an appropriate base image
-FROM python:3.9
+FROM mcr.microsoft.com/m1/apple-silicon:11.0.0
 
-# Install Chrome dependencies
-RUN apt-get update && apt-get install -y wget gnupg ca-certificates
+# Download and install Chrome
+RUN curl -o /tmp/chrome.dmg -L https://dl.google.com/chrome/mac/stable/GGRO/googlechrome.dmg && \
+    hdiutil attach /tmp/chrome.dmg && \
+    cp -r "/Volumes/Google Chrome/Google Chrome.app" /Applications/ && \
+    hdiutil detach "/Volumes/Google Chrome" && \
+    rm /tmp/chrome.dmg
 
-# Add Chrome package repository
-RUN wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | apt-key add -
-RUN echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list
-
-# Install Chrome
-RUN apt-get update && apt-get install -y google-chrome-stable
-
-# Install Chromedriver
-RUN apt-get update && apt-get install -y wget unzip
-RUN wget -q https://chromedriver.storage.googleapis.com/<version>/chromedriver_linux64.zip
-RUN unzip chromedriver_linux64.zip -d /usr/local/bin/
-RUN rm chromedriver_linux64.zip
+# Download and install Chromedriver
+RUN curl -o /usr/local/bin/chromedriver -L https://chromedriver.storage.googleapis.com/<version>/chromedriver_mac64.zip && \
+    unzip /usr/local/bin/chromedriver -d /usr/local/bin/ && \
+    chmod +x /usr/local/bin/chromedriver
+    
