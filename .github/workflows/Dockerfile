@@ -12,4 +12,6 @@ RUN curl -o /tmp/chrome.dmg -L https://dl.google.com/chrome/mac/stable/GGRO/goog
 RUN curl -o /usr/local/bin/chromedriver -L https://chromedriver.storage.googleapis.com/<version>/chromedriver_mac64.zip && \
     unzip /usr/local/bin/chromedriver -d /usr/local/bin/ && \
     chmod +x /usr/local/bin/chromedriver
+    echo 'export PATH="/webdrivers/chromedriver:$PATH"' >> $GITHUB_ENV
+
     
