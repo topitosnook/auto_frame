@@ -11,11 +11,12 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-      
-    - name: Add chromedriver to PATH
-      run: |
-          echo 'export PATH="/webdrivers/chromedriver:$PATH"' >> $GITHUB_ENV
-        
+    - name: build image
+      run: docker build -t base:auto_frame .
+
+    - name: build zapping_drhouse
+      run: docker run --rm --user "$(id -u)":"$(id -g)" -v "$PWD":/auto_frame -w /auto_frame base:auto_frame cargo build --release
+
     - name: Install environment requirements
       run: pip install -r requirements.txt
 
